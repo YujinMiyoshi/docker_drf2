@@ -25,7 +25,7 @@ SECRET_KEY = '=z6oy-lnr3$%m#h7)tje2iy_d#=9hv+rg7z3@_-4$0bjcp%&*z'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["winged-hue-377617.an.r.appspot.com"]
 
 
 # Application definition
@@ -125,3 +125,5 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 AUTH_USER_MODEL = 'core.User'
+
+STATIC_ROOT = '/static'
