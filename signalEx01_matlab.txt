@@ -1,0 +1,63 @@
+% create original
+n = -100:1:100;
+T0 = 0.5;
+Ts = 0.01;
+sigma = 1;
+omega_0 = 2*pi/T0;
+plus_x = exp((sigma + 1i*omega_0)*Ts*n);
+minus_x = exp((-sigma + 1i*omega_0)*Ts*n);
+plus_x_real = real(plus_x);
+plus_x_imag = imag(plus_x);
+minus_x_real = real(minus_x);
+minus_x_imag = imag(minus_x);
+
+% add noise
+noise_std = 0.5;
+plus_x_real_noise = real(plus_x) + noise_std*randn(size(x));
+plus_x_imag_noise = imag(plus_x) + noise_std*randn(size(x));
+minus_x_real_noise = real(minus_x) + noise_std*randn(size(x));
+minus_x_imag_noise = imag(minus_x) + noise_std*randn(size(x));
+
+% plot original
+subplot(2,4,1);
+plot(n, real(plus_x), 'b', n, plus_x_real, '^');
+title('real(x[n]), σ=1');
+xlabel('n');
+ylabel('Amplitude');
+subplot(2,4,2);
+plot(n, imag(plus_x), 'b', n, plus_x_imag, '_');
+title('imag(x[n]), σ=1');
+xlabel('n');
+ylabel('Amplitude');
+subplot(2,4,5);
+plot(n, real(minus_x), 'b', n, minus_x_real, '^');
+title('real(x[n]), σ=-1');
+xlabel('n');
+ylabel('Amplitude');
+subplot(2,4,6);
+plot(n, imag(minus_x), 'b', n, minus_x_imag, '_');
+title('imag(x[n]), σ=-1');
+xlabel('n');
+ylabel('Amplitude');
+
+% plot signal with noise
+subplot(2,4,3);
+plot(n, real(plus_x), 'b', n, plus_x_real_noise, 'o');
+title('real(x[n]) + noise, σ=1');
+xlabel('n');
+ylabel('Amplitude');
+subplot(2,4,4);
+plot(n, imag(plus_x), 'b', n, plus_x_imag_noise, 'square');
+title('imag(x[n]) + noise, σ=1');
+xlabel('n');
+ylabel('Amplitude');
+subplot(2,4,7);
+plot(n, real(minus_x), 'b', n, minus_x_real_noise, 'o');
+title('real(x[n]) + noise, σ=-1');
+xlabel('n');
+ylabel('Amplitude');
+subplot(2,4,8);
+plot(n, imag(minus_x), 'b', n, minus_x_imag_noise, 'square');
+title('imag(x[n]) + noise, σ=-1');
+xlabel('n');
+ylabel('Amplitude');
