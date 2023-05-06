@@ -80,10 +80,49 @@ WSGI_APPLICATION = 'todo_project.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.mysql',
+        'HOST': '/cloudsql/winged-hue-377617:asia-northeast1:drf-db-instance',
+        'USER': 'drf-db-instance',
+        'PASSWORD': 'drf-db-instancenopassword',
+        'NAME': 'drf_db',
     }
 }
+DATABASES = {
+       'default': {
+           'ENGINE': 'django.db.backends.mysql',
+           'HOST': '/cloudsql/winged-hue-377617:asia-northeast1:drf-db-instance',
+           'USER': 'drf-db-instance',
+           'PASSWORD': 'drf-db-instancenopassword',
+           'NAME': 'drf_db',
+       }
+   }
+"""
+if os.getenv('GAE_APPLICATION', None):
+   # GAE本番環境
+   DATABASES = {
+       'default': {
+           'ENGINE': 'django.db.backends.mysql',
+           'HOST': '/cloudsql/winged-hue-377617:asia-northeast1:drf-db-instance',
+           'USER': 'drf-db-instance',
+           'PASSWORD': 'drf-db-instancenopassword',
+           'NAME': 'drf_db',
+       }
+   }
+else:
+   # 開発環境
+   # 事前に./cloud_sql_proxyを実行してプロキシ経由でアクセスできるようにする必要がある。
+   DATABASES = {
+       'default': {
+           'ENGINE': 'django.db.backends.mysql',
+           'NAME': 'django-db',
+           'USER': 'django',
+           'PASSWORD': 'django',
+           'HOST': 'db',
+           'PORT': '3306'
+       }
+   }
+"""  
+
 
 
 # Password validation

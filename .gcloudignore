@@ -7,3 +7,5 @@ docker-compose-deploy.yml
 Dockerfile
 Makefile
 README.md
+gcloud
+mysql
